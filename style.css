@@ -1,0 +1,38 @@
+html {
+    font-family: "Helvetica", "Arial", sans-serif;
+}
+
+body {
+    margin: 0;
+}
+
+html > body > * {
+    padding: 7px;
+}
+
+header {
+    position: sticky;
+    top: 0;
+    padding: 15px;
+    background-color: cadetblue;
+    font-size: 20px;
+    font-family: "Georgia", "Times New Roman", serif;
+}
+
+a {
+    padding-right: 20px;
+    color: black;
+    text-decoration-line: none;
+}
+
+a:hover {
+    text-decoration-line: underline;
+}
+
+a:active {
+
+}
+
+#placeholder {
+    font-size: 40px;
+}
