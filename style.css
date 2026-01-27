@@ -7,16 +7,22 @@ body {
 }
 
 html > body > * {
-    padding: 7px;
+    padding: 20px;
 }
 
 header {
     position: sticky;
     top: 0;
-    padding: 15px;
+    padding: 10px !important;
     background-color: cadetblue;
     font-size: 20px;
     font-family: "Georgia", "Times New Roman", serif;
+    z-index: 1;
+}
+
+h1 {
+    padding: 0 !important;
+    padding-left: 50px !important;
 }
 
 a {
@@ -29,8 +35,33 @@ a:hover {
     text-decoration-line: underline;
 }
 
-a:active {
+#catalogue {
+    background-color: rgb(220, 255, 245);
+}
 
+#catalogue table {
+    border-collapse: separate;
+    border-spacing: 20px 54px;
+}
+
+.catalogue-item {
+    position: relative;
+    padding: 0;
+    border: 2px black solid;
+}
+
+.catalogue-item h3 {
+    background-color: white;
+    margin: 0;
+    padding: 5px;
+
+    border: 2px black solid;
+    border-top: transparent;
+
+    position: absolute;
+    top: 200px;
+    left: -2px;
+    right: -2px;
 }
 
 #placeholder {
