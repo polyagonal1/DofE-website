@@ -25,8 +25,11 @@ h1 {
     padding-left: 50px !important;
 }
 
-a {
+header a {
     padding-right: 20px;
+}
+
+a {
     color: black;
     text-decoration-line: none;
 }
@@ -35,13 +38,25 @@ a:hover {
     text-decoration-line: underline;
 }
 
-#catalogue {
+body {
+    position: relative;
+}
+
+.body {
     background-color: rgb(220, 255, 245);
+}
+
+.with-sidebar {
+    position: absolute;
+    margin-left: 200px;
+    right: 0;
+    left: 0;
 }
 
 #catalogue table {
     border-collapse: separate;
     border-spacing: 20px 54px;
+    table-layout: auto;
 }
 
 .catalogue-item {
@@ -66,4 +81,13 @@ a:hover {
 
 #placeholder {
     font-size: 40px;
+}
+
+.left-sidebar {
+    left: 0;
+    margin-right: 200px;
+    height: 100vh;
+    overflow-y: scroll;
+    position: absolute;
+    z-index: 1;
 }
