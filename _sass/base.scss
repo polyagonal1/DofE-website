@@ -1,0 +1,37 @@
+$backgroundColor: #ffffff;
+$bodyColor: #000000;
+$bodyFont: "Helvetica", "Arial", sans-serif;
+$bodyFontSize: 16px;
+
+$linkHoverColor: #8dd6d9;
+
+body {
+  background: $backgroundColor;
+  color: $bodyColor;
+  font-family: $bodyFont;
+  font-size: $bodyFontSize;
+  margin: 0;
+}
+
+a:hover {
+  text-decoration-line: underline;
+  color: #76b3b5;
+}
+
+a:not(:hover) {
+  text-decoration-line: none;
+  color: $bodyColor
+}
+
+main {
+  padding: 0 50px;
+}
+
+p {
+  font-size: 20px;
+}
+
+.unrelated-paragraph {
+  margin-block-start: 50px;
+  font-size: 16px;
+}

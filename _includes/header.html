@@ -1,0 +1,55 @@
+{% assign long_title = include.long_title %}
+{% assign short_title = include.short_title %}
+{% assign home_page = site.pages | find: "perma_id", "home_page" %}
+
+<header>
+    <nav id="header__main-nav">
+        <a href="{{ site.baseurl }}{{ home_page.url }}" id="header__home-link">{{ site.title }}</a>
+        {% for page in site.pages %}
+            {% assign url_segments_unfiltered = page.url | split: "/" | compact %}
+
+            {% assign clean_url = "" %}
+
+            {% for s in url_segments_unfiltered %}
+                {% unless s == "" %}
+                    {% if clean_url == "" %}
+                        {% assign clean_url = s %}
+                    {% else %}
+                        {% assign clean_url = clean_url | append: "/" | append: s %}
+                    {% endif %}
+                {% endunless %}
+            {% endfor %}
+
+            <!-- clean_url = {{ clean_url | inspect }} -->
+
+            {% assign url_segments = clean_url | split: "/" %}
+
+            {% if url_segments.size == 1 %}
+                <a href="{{ site.baseurl }}{{ page.url }}">{{ page.title }}</a>
+            {% endif %}
+        {% endfor %}
+    </nav>
+    <nav id="header__breadcrumbs">
+        <p>You are here:</p>
+        <ul class="breadcrumbs__crumbcontainer">
+            <!-- page.url = {{ page.url | inspect }} -->
+
+            {% assign current_url = "" %}
+
+            {% assign page_url_chars = page.url | split: "" %}
+            {% for char in page_url_chars %}
+                <!-- char = {{ char | inspect }} -->
+
+                {% assign current_url = current_url | append: char %}
+
+                {% for p in site.pages %}
+                    {% if current_url == p.url %}
+                        <li class="crumbcontainer__crumb">
+                            <a href="{{ site.baseurl }}{{ p.url }}">{{ p.short_title | default: p.title | default: p.long_title }}</a>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+            {% endfor %}
+        </ul>
+    </nav>
+</header>

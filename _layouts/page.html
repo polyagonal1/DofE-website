@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: "en-GB" }}">
+
+    {% assign long_title = "" %}
+    {% assign short_title = "" %}
+
+    {% if page.title %}
+        {% if page.long_title %}
+            {% assign long_title = page.long_title %}
+        {% else %}
+            {% assign long_title = page.title %}
+        {% endif %}
+
+        {% if page.short_title %}
+            {% assign short_title = page.short_title %}
+        {% else %}
+            {% assign long_title = page.title %}
+        {% endif %}
+    {% else %}
+        {% if page.long_title %}
+            {% assign long_title = page.long_title %}
+        {% endif %}
+
+        {% if page.short_title %}
+            {% assign short_title = page.short_title %}
+        {% endif %}
+    {% endif %}
+
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="utf-8">
+        <title>{{ long_title }} | {{ site.title }}</title>
+        <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/main.css">
+    </head>
+    <body>
+
+    {% include header.html long_title=long_title short_title=short_title %}
+
+    <main role="main">
+        {% unless page.url == "/" %}
+            <h1>{{ long_title }}</h1>
+        {% endunless %}
+
+        {{ content }}
+    </main>
+
+    </body>
+</html>
