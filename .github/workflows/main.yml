@@ -1,0 +1,39 @@
+name: Build and Deploy to GitHub Pages
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: Install dependencies and build the site
+    steps:
+      - name: Get repository contents
+        uses: actions/checkout@v6
+      - name: Install the Node.js toolchain
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24
+      - name: Install the Ruby toolchain
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+      - name: Install Node-based dependencies
+        run: npm install
+      - name: Build SCSS into CSS
+        run: npx sass --load-path=./_sass ./assets/css/main.scss ./assets/css/main.css
+      - name: Build site
+        run: bundle exec jekyll build
+      - name: Upload `/_site` as a GitHub Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./_site
+  deploy:
+    name: Deploy site
+    runs-on: ubuntu-latest
+    environment: github-pages
+    needs: build
+    permissions:
+      pages: write
+      id-token: write
+    steps:
+      - name: Deploy
+        uses: actions/deploy-pages@v4
+      
