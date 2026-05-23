@@ -10,4 +10,5 @@ exclude:
   - bin/
 
 include:
-  - assets/css/main.css
+plugins:
+  - jekyll-seo-tag
