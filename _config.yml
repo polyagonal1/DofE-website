@@ -8,6 +8,8 @@ exclude:
   - _sass/
   - assets/css/main.scss
   - bin/
+  - package.json
+  - package-lock.json
 
 include:
 plugins:
