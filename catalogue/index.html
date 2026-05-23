@@ -2,18 +2,51 @@
 layout: page
 title: Catalogue
 perma_id: catalogue
+
+style:
+    - main.css
+    - catalogue.css
 ---
 
-<ul class="gridlist">
-    <li class="gridlist__item">
-        <a href="./goldfish.html">
-            <figure class="catalogue__figure">
-                <picture>
-                    <img alt="Placeholder image for a picture of an origami goldfish." src="https://placehold.co/400x400/png/000000">
-                </picture>
-                <figcaption>Goldfish</figcaption>
-            </figure>
-        </a>
+<ul class="gridlist catalogue">
+    {% for page in site.pages %}
+        {% unless page.perma_id == "catalogue" %}
 
-    </li>
+            {% assign page_url_split = page.url | replace: "/", " " | strip | split: " " %}
+
+            <!-- page.url = {{ page.url | inspect }} -->
+            <!-- page_url_split = {{ page_url_split | inspect }} -->
+
+            {% assign first_element = page_url_split | first %}
+            {% if first_element == "catalogue" %}
+                <li class="gridlist__item catalogue__item">
+                    <a href="{{ site.baseurl }}{{ page.url }}">
+                        <figure class="catalogue__item--figure">
+                            <picture>
+                                <img
+                                    {% if page.thumbnail.img.src %}
+                                        src="{{ page.thumbnail.img.src }}"
+                                    {% else %}
+                                        src="https://placehold.co/400x400/png/000000"
+                                    {% endif %}
+
+                                    {% if page.thumbnail.img.alt %}
+                                        alt="{{ page.thumbnail.img.alt }}"
+                                    {% endif %}
+                                >
+                                {% for source in page.sources %}
+                                    <source
+                                        srcset="{{ source.srcset }}"
+                                        {% if source.sizes %}
+                                            sizes="{{ source.sizes }}"
+                                        {% endif %}>
+                                {% endfor %}
+                            </picture>
+                            <figcaption>{{ page.short_title }}</figcaption>
+                        </figure>
+                    </a>
+                </li>
+            {% endif %}
+        {% endunless %}
+    {% endfor %}
 </ul>

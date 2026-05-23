@@ -6,11 +6,13 @@ lang: "en-GB"
 
 exclude:
   - _sass/
-  - assets/css/main.scss
+  - assets/css/*.scss
   - bin/
   - package.json
   - package-lock.json
 
 include:
+  - assets/css/*.css
+
 plugins:
   - jekyll-seo-tag

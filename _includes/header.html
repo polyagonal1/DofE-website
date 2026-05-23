@@ -6,23 +6,10 @@
     <nav id="header__main-nav">
         <a href="{{ site.baseurl }}{{ home_page.url }}" id="header__home-link">{{ site.title }}</a>
         {% for page in site.pages %}
-            {% assign url_segments_unfiltered = page.url | split: "/" | compact %}
 
-            {% assign clean_url = "" %}
+            {% assign url_segments = page.url | replace: "/", " " | strip | split: " " %}
 
-            {% for s in url_segments_unfiltered %}
-                {% unless s == "" %}
-                    {% if clean_url == "" %}
-                        {% assign clean_url = s %}
-                    {% else %}
-                        {% assign clean_url = clean_url | append: "/" | append: s %}
-                    {% endif %}
-                {% endunless %}
-            {% endfor %}
-
-            <!-- clean_url = {{ clean_url | inspect }} -->
-
-            {% assign url_segments = clean_url | split: "/" %}
+            <!-- url_segments = {{ url_segments | inspect }} -->
 
             {% if url_segments.size == 1 %}
                 <a href="{{ site.baseurl }}{{ page.url }}">{{ page.title }}</a>
