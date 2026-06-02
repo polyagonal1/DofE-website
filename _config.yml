@@ -7,7 +7,7 @@ lang: "en-GB"
 exclude:
   - _sass/
   - assets/css/*.scss
-  - bin/
+  - scripts/
   - package.json
   - package-lock.json
 
