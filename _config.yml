@@ -10,6 +10,8 @@ exclude:
   - scripts/
   - package.json
   - package-lock.json
+  - README.md
+  - doc_assets/
 
 include:
   - assets/css/*.css
