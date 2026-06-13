@@ -44,22 +44,22 @@ styling) more readable. More about this later.
 
 Because this website is built using Jekyll, it follows the directory structure
 that is required for Jekyll websites:
-- [**_includes/**](_includes-dir) – Where resuable snippets of HTML go. For
+- **[_includes/](_includes-dir)** – Where resuable snippets of HTML go. For
   example, I have an include file which has the HTML code for the header, which
   I can reuse in all my layouts.
-- [**_layouts/**](_layouts-dir) – Where reusable [layouts](jekyll-layouts) go.
+- **[_layouts/](_layouts-dir)** – Where reusable [layouts](jekyll-layouts) go.
   These define the structure of a page in the site.
-- [**_sass/**](_sass-dir) – Where Sass and SCSS modules go
-- [**assets/**](assets-dir)
-  - [**css/**](assets/css-dir) – Where top-level main SCSS stylesheets go. 
+- **[_sass/](_sass-dir)** – Where Sass and SCSS modules go
+- **[assets/](assets-dir)**
+  - **[css/](assets/css-dir)** – Where top-level main SCSS stylesheets go. 
     These top-level SCSS modules get compiled into CSS stylsheets in the same 
     directory. It is the CSS stylesheets which are what are actually referenced 
     in the layout for a page.
-  - [**img/**](assets/img-dir) – Where images and videos supplementary to the
+  - **[img/](assets/img-dir)** – Where images and videos supplementary to the
     site are stored.
-- [**_config.yml**](_config.yml-file) – Configures Jekyll and is the source of
+- **[_config.yml](_config.yml-file)** – Configures Jekyll and is the source of
   site-wide variables and data
-- [**Gemfile**](gemfile-file) – File which controls the version of Jekyll and
+- **[Gemfile](gemfile-file)** – File which controls the version of Jekyll and
   the Jekyll plugins used and other Ruby-based dependencies
 
 [jekyll-layouts]: https://jekyllrb.com/docs/layouts/
@@ -75,18 +75,18 @@ that is required for Jekyll websites:
 
 As well as the Jekyll-specific files/directories, it also has files and folders
 specific to itself:
-- [**.github/**](.github-dir)
-    - [**workflows/**](.github/workflows-dir) – Where GitHub Actions workflows
+- **[.github/](.github-dir)**
+    - **[workflows/](.github/workflows-dir)** – Where GitHub Actions workflows
       are stored, including my custom workflow which I use to build and deploy to
       GitHub Pages.
-- [**catalogue/**](catalogue-dir) – Directory for where the source code for the
+- **[catalogue/](catalogue-dir)** – Directory for where the source code for the
   catalogue and all origami models in the catalogue are.
-- [**scripts/**](scripts-dir) – Directory for where utility scripts used for
+- **[scripts/](scripts-dir)** – Directory for where utility scripts used for
   local development of the website go
-- [**doc_assets/**](doc_assets-dir) – Directory for where images and videos and 
+- **[doc_assets/](doc_assets-dir)** – Directory for where images and videos and 
   other assets supplementary to this README and other documentation separate 
   from the actual website go.
-- [**package.json**](package.json-file) – Configuration file which controls the
+- **[package.json](package.json-file)** – Configuration file which controls the
   Node.js-based dependencies of the website, including the SCSS compiler
 
 [.github-dir]: https://github.com/polyagonal1/DofE-website/tree/main/.github
@@ -99,22 +99,23 @@ specific to itself:
 ### SCSS compilation
 
 There are 3 releases of Sass:
-- Dart Sass – The newest and fastest and most 'current' release of Sass written
-  in Node.js (JavaScript). It has all of the latest and greatest features of
-  Sass. This release of Sass is recommended for new projects.
-- LibSass – An obsolete and unmaintained release of Sass written in C and
+- **Dart Sass** – The newest and fastest and most 'current' release of Sass 
+  written in Node.js (JavaScript). It has all of the latest and greatest 
+  features of Sass. This release of Sass is recommended for new projects.
+- **LibSass** – An obsolete and unmaintained release of Sass written in C and
   requires a wrapper to actually compile anything.
-- Ruby Sass – The original implementation of Sass written in Ruby. It is no
+- **Ruby Sass** – The original implementation of Sass written in Ruby. It is no
   longer supported and reached it's end of life in early 2019. It does not
   support a lot of the newest features supported in Dart Sass.
 
 Jekyll already supports SCSS/Sass compilation out of the box, however, the
 release of Sass Jekyll uses is Ruby Sass, which is not at all ideal. To
-overcome this issue, Jekyll's compilation of SCSS/Sass is disabled by making
-Jekyll not look at any of the SCSS files in the Jekyll config file. Instead,
-the SCSS gets compiled before the Jekyll build step and Jekyll only looks at
-the built CSS, so to Jekyll, it looks like they were CSS files written by hand
-and are included in the output.
+overcome this issue, I've disabled Jekyll's compilation of SCSS/Sass by making
+Jekyll not look at any of the SCSS files. (What files Jekyll looks at and 
+ignores is configured in the `config.yml` file.) Instead, the SCSS gets 
+compiled before the Jekyll build step and Jekyll only looks at the built CSS, 
+so to Jekyll, it looks like they were CSS files written by hand and therefore 
+are included in the output.
 
 The actual stylsheets that are compiled are all of the SCSS files in 
 [`/assets/css/`](assets/css-dir). These get compiled into a CSS file with the 
@@ -139,20 +140,20 @@ bundle exec jekyll serve --force-polling --livereload
 The first part runs Dart Sass, which will compile all the SCSS/Sass files in 
 `/assets/css/` into CSS files in the same directory. It will then watch the 
 files for changes to them, and when it sees a change in any of the files, it 
-will recompile that stylesheet so the resulting CSS output matches. The `&` at 
-the end of it means that what happens next will run in parallel with it. The 
+will recompile that stylesheet so the resulting CSS output matches. The 
 `--load-path=./_sass` part of it is necessary because the SCSS stylsheets which 
 are being compiled reference SCSS modules in the `/_sass/` directory and Dart 
-Sass wouldn't know where to look for them otherwise.
+Sass wouldn't know where to look for them otherwise. The `&` at the end of it 
+means that what happens next will run in parallel with it (at the same time).
 
-The next part builds the rest of the website and serves it locally using 
-Jekyll. By 'serves it locally', I mean that if you were to open a new tab on a 
-browser while this shell script is running, and typed in 'localhost:4000', and 
-pressed enter, it would look like an actual website. By default, this command 
-will also watch for any changes to the website and rebuild it when necessary. 
-The`--livereload` part of the command means that I don't have to reload the tab 
-whenever I want to see the changes to the website on the browser; it just 
-reloads automatically.
+The next part – being run in parallel as Dart Sass – builds the rest of the 
+website and serves it locally using Jekyll. By 'serves it locally', I mean that 
+if you were to open a new tab on a browser while this shell script is running, 
+and typed in 'localhost:4000', and pressed enter, it would look like an actual 
+website. By default, this command will also watch for any changes to the 
+website and rebuild it when necessary. The`--livereload` part of the command 
+means that I don't have to reload the tab whenever I want to see the changes to 
+the website on the browser; it just reloads automatically.
 
 These 2 things running in parallel (because of the `&`) means that if I change 
 some of the styling (one of the SCSS files) while this shell script is running, 
@@ -185,8 +186,14 @@ services when using GitHub Pages.
 
 Currently, I am using GitHub Actions to build and deploy using a custom 
 workflow which can be found [here](custom-workflow). This workflow first 
-compiles all the SCSS into CSS using Dart Sass; then it builds the rest of the 
-site using Jekyll and deploys the output.
+installs the Ruby and Node.js toolchain. This is required because Jekyll is 
+written in Ruby and can't run without it. Dart Sass is written in Node.js 
+JavaScript so therefore requires the Node.js toolchain to run as well. After 
+that, Jekyll and Dart Sass themselves are installed. Then, once everything we 
+need is installed, Dart Sass compiles all the SCSS into browser-readable CSS; 
+then Jekyll builds the rest of the site into the `_site/` directory. Then the 
+contents of the `_site/` directory (the built site) is deployed (the changes 
+are incorporated into the actual published website).
 
 It would be impossible to do this using the 'Deploy from a branch' option 
 because the build pipeline with that option is fixed: I can't customise it. It 
