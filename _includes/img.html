@@ -1,0 +1,30 @@
+{% assign included = include.obj | default: include %}
+
+<img
+    {% if included.class %}
+        class="{{ included.class }}"
+    {% endif %}
+    {% if included.id %}
+        id="{{ included.id }}"
+    {% endif %}
+
+    alt="{{ included.alt }}"
+
+    {% if included.src %}
+        src="{{ site.baseurl }}{{ included.src }}"
+    {% endif %}
+    {% if included.srcset %}
+        srcset="{{ included.srcset }}"
+    {% endif %}
+
+    {% if included.width %}
+        width="{{ included.width }}"
+    {% endif %}
+    {% if included.height %}
+        height="{{ included.height }}"
+    {% endif %}
+
+    {% if included.img.sizes %}
+        sizes="{{ included.img.sizes }}"
+    {% endif %}
+>

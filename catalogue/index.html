@@ -3,13 +3,14 @@ layout: page
 title: Catalogue
 perma_id: catalogue
 
-style:
-    - main.css
+extra_style:
     - catalogue.css
 ---
 
-<ul class="gridlist catalogue">
+<ul id="catalogue" class="flexlist">
     {% for page in site.pages %}
+        {% assign page_img_folder = page.img_folder | default: page.perma_id | default: "/" %}
+
         {% unless page.perma_id == "catalogue" %}
 
             {% assign page_url_split = page.url | replace: "/", " " | strip | split: " " %}
@@ -19,30 +20,48 @@ style:
 
             {% assign first_element = page_url_split | first %}
             {% if first_element == "catalogue" %}
-                <li class="gridlist__item catalogue__item">
+                <li class="flexlist__item catalogue-item">
                     <a href="{{ site.baseurl }}{{ page.url }}">
-                        <figure class="catalogue__item--figure">
-                            <picture>
-                                <img
-                                    {% if page.thumbnail.img.src %}
-                                        src="{{ page.thumbnail.img.src }}"
-                                    {% else %}
-                                        src="https://placehold.co/400x400/png/000000"
-                                    {% endif %}
+                        <figure class="catalogue-item__figure">
 
-                                    {% if page.thumbnail.img.alt %}
-                                        alt="{{ page.thumbnail.img.alt }}"
+                            {% assign img_src = "" | split: "," %}
+
+                            {% capture page_thumbnail_img_src_emptyness %}
+                                {% include is_empty.html obj=page.thumbnail.img.src %}
+                            {% endcapture %}
+                            {% assign page_thumbnail_img_src_emptyness = page_thumbnail_img_src_emptyness | strip %}
+
+                            <!-- page_thumbnail_img_src_emptyness = {{ page_thumbnail_img_src_emptyness | inspect }}-->
+                            {% if page_thumbnail_img_src_emptyness == "not-empty" %}
+                                <!-- things hap'nin'-->
+                                {% assign img_src = "/assets/img/"
+                                    | append: page_img_folder
+                                    | append: page.thumbnail.img.src
+                                %}
+                            {% endif %}
+
+                            <!-- page.thumbnail.img.src = {{ page.thumbnail.img.src | inspect }} -->
+                            <!-- img_src = {{ img_src }} -->
+
+                            {% include image.html
+                                img_src=img_src
+                                img_alt=page.thumbnail.img.alt
+                                img_srcset=page.thumbnail.img.srcset
+                                img_width=page.thumbnail.img.width
+                                img_height=page.thumbnail.img.height
+                                img_sizes=page.thumbnail.img.sizes
+                            %}
+
+                            <figcaption class="catalogue-item__figure--caption">
+                                {% if page.short_title %}
+                                    {{- page.short_title -}}
+                                {% else %}
+                                    {% if page.title %}
+                                        {{- page.title -}}
                                     {% endif %}
-                                >
-                                {% for source in page.sources %}
-                                    <source
-                                        srcset="{{ source.srcset }}"
-                                        {% if source.sizes %}
-                                            sizes="{{ source.sizes }}"
-                                        {% endif %}>
-                                {% endfor %}
-                            </picture>
-                            <figcaption>{{ page.short_title }}</figcaption>
+                                    Unknown
+                                {% endif %}
+                            </figcaption>
                         </figure>
                     </a>
                 </li>

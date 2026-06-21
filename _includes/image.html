@@ -1,0 +1,84 @@
+{% assign mode = "none" %}
+
+{% assign included = include.obj | default: include %}
+
+<!-- included = {{ included | inspect }} -->
+
+{%- capture included_sources_emptyness -%}
+    {%- include is_empty.html obj=included.sources -%}
+{%- endcapture -%}
+
+{% assign included_sources_emptyness = included_sources_emptyness | strip %}
+
+<!-- included_sources_emptyness = {{ included_sources_emptyness | inspect }} -->
+
+{% if included_sources_emptyness == "empty" %}
+    <!-- included.sources is empty -->
+    {% if included.img %}
+        <!-- included.img is truthy -->
+        <!-- included.img = {{ included.img | inspect }}-->
+        {% include img.html obj=included.img %}
+    {% else %}
+        <!-- included.img is falsy -->
+        {% assign class = included.class | default: included.img_class %}
+        {% assign id = included.id | default: included.img_id %}
+
+        {% include img.html
+            class=class
+            id=id
+            alt=included.img_alt
+            src=included.img_src
+            srcset=included.img_srcset
+            width=included.img_width
+            height=included.img_height
+            sizes=included.img_sizes
+        %}
+    {% endif %}
+{% else %}
+    <picture
+        {% if included.class %}
+            class="{{ included.class }}"
+        {% endif %}
+        {% if included.id %}
+            id="{{ included.id }}"
+        {% endif %}
+    >
+        {% for source in included.sources %}
+            <source
+                {% if source.srcset %}
+                    srcset="{{ source.srcset }}"
+                {% endif %}
+                {% if source.sizes %}
+                    sizes="{{ source.sizes }}"
+                {% endif %}
+                {% if source.media %}
+                    media="{{ source.media }}"
+                {% endif %}
+                {% if source.type %}
+                    type="{{ source.type }}"
+                {% endif %}
+                {% if source.width %}
+                    width="{{ source.width }}"
+                {% endif %}
+                {% if source.height %}
+                    height="{{ source.height }}"
+                {% endif %}
+            >
+        {% endfor %}
+
+        {% if included.img %}
+            {% include img.html obj=included.img %}
+        {% else %}
+            {% include img.html
+                class=included.img_class
+                id=included.img_id
+                alt=included.img_alt
+                src=included.img_src
+                srcset=included.img_srcset
+                width=included.img_width
+                height=included.img_height
+                sizes=included.img_sizes
+            %}
+        {% endif %}
+    </picture>
+{% endif %}

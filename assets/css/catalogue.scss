@@ -1,7 +1,11 @@
 $maxWidth: 250px;
 $maxHeight: 250px;
 
-.catalogue__item--figure {
+.catalogue-item {
+  max-width: $maxWidth;
+}
+
+.catalogue-item__figure {
   margin: 0;
 
   max-width: $maxWidth;
@@ -12,6 +16,7 @@ $maxHeight: 250px;
   }
 }
 
-.catalogue__item {
-  max-width: $maxWidth;
+.catalogue-item__figure--caption {
+  border-bottom: 1px solid darkgrey;
+  padding: 5px;
 }

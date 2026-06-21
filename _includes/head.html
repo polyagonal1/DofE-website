@@ -1,0 +1,28 @@
+<head>
+    {% seo %}
+
+    <link rel="icon" type="image/svg+xml" href="{{ site.baseurl }}/favicon.svg">
+    <link rel="icon" sizes="32x32" href="{{ site.baseurl }}/favicon.ico">
+
+    <meta name="viewport" content="width=device-width">
+
+    <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/main.css">
+
+    {% if include.extra_style %}
+        {% for stylesheet in include.extra_style %}
+            <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/{{ stylesheet }}">
+        {% endfor %}
+    {% endif %}
+
+    {% if site.scripting %}
+
+        <script type="module" src="{{ site.baseurl }}/assets/js/main.js"></script>
+
+        {% if include.extra_scripts %}
+            {% for script in include.extra_scripts %}
+                <script type="module" src="{{ site.baseurl }}/assets/js/{{ script }}"></script>
+            {% endfor %}
+        {% endif %}
+
+    {% endif %}
+</head>

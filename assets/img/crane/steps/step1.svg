@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="500" height="500" version="1.1" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+	<defs>
+		<marker id="DartArrow-0" overflow="visible" markerHeight="1" markerWidth="1" orient="auto-start-reverse" preserveAspectRatio="xMidYMid" viewBox="0 0 1 1">
+			<path transform="scale(-.5)" d="m0 0 5-5-17.5 5 17.5 5z" fill="context-stroke" fill-rule="evenodd"/>
+		</marker>
+		<marker id="DartArrow-7" overflow="visible" markerHeight="1" markerWidth="1" orient="auto-start-reverse" preserveAspectRatio="xMidYMid" viewBox="0 0 1 1">
+			<path transform="scale(-.5)" d="m0 0 5-5-17.5 5 17.5 5z" fill="context-stroke" fill-rule="evenodd"/>
+		</marker>
+	</defs>
+	<g stroke="#000" stroke-linejoin="round" stroke-width="3">
+		<g fill="#fff">
+			<path d="m1.5 1.5h497v497h-497z" stroke-linecap="round"/>
+			<path transform="translate(376.41 -566.61)" d="m1.5 498.5 497-497" stroke-dasharray="12,6"/>
+			<path transform="translate(-17.982 18.993)" d="m19.482 231.01h497" stroke-dasharray="12,6"/>
+		</g>
+		<path d="m257.36 47.927s38.515 115.05 37.728 174.59c-1.0475 79.206-56.319 230.87-56.319 230.87s11.56-144.79 0.28953-215.85c-8.7773-55.339-52.228-159.77-52.228-159.77" fill-opacity="0" marker-end="url(#DartArrow-7)"/>
+		<path d="m233-506.14s71.712 94.832 59.478 221.28c-11.591 119.81-52.487 183.76-52.487 183.76" fill-opacity="0" marker-end="url(#DartArrow-0)"/>
+	</g>
+</svg>

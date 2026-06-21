@@ -1,0 +1,60 @@
+{% comment %} ---------------------
+
+    This include returns 'empty' if an object is empty, 'not-empty' otherwise.
+
+------------------ {% endcomment %}
+
+{% comment %}
+    Checks if the item itself is empty
+{% endcomment %}
+
+{% assign emptyness = true %}
+
+{% if include.obj != empty or include.obj %}
+    {% comment %}<!-- include.obj == empty -->{% endcomment %}
+    {% assign emptyness = false %}
+{% endif %}
+
+{% comment %}<!-- emptyness currently = {{ emptyness | inspect }} -->{% endcomment %}
+
+{% comment %}
+    Checks if the items in the object are all empty or not
+{% endcomment %}
+
+{% assign items_empty = true %}
+{% for item in include.obj %}
+    {% comment %}<!-- item = {{ item | inspect }} -->{% endcomment %}
+    {% assign item_empty = false %}
+
+    {% if item == empty %}
+        {% assign item_empty = true %}
+    {% endif %}
+
+    {% unless item %}
+        {% assign item_empty = true %}
+    {% endunless %}
+
+    {% comment %}<!-- item_empty = {{ item_empty | inspect }}-->{% endcomment %}
+
+    {% if item_empty == false %}
+        {% assign items_empty = false %}
+    {% endif %}
+{% endfor %}
+
+{% comment %}<!-- items_empty = {{ items_empty | inspect }}-->{% endcomment %}
+
+{% if items_empty == true %}
+    {% assign emptyness = true %}
+{% endif %}
+
+{% comment %}
+    Actually returns 'empty' or 'non-empty'
+{% endcomment %}
+
+{% comment %}<!-- emptyness = {{ emptyness | inspect }}-->{% endcomment %}
+
+{% if emptyness == true %}
+    empty
+{% else %}
+    not-empty
+{% endif %}

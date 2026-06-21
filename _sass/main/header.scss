@@ -9,6 +9,8 @@ header {
   }
 
   position: sticky;
+  top: 0;
+  left: 0;
 
   a {
     color: $headerForegroundColor;
@@ -23,7 +25,7 @@ header {
 
   a {
     font-family: "Georgia", "Times New Roman", serif;
-    font-size: 20px;
+    font-size: 1.3rem;
 
     color: $headerForegroundColor;
   }
@@ -39,6 +41,7 @@ header {
   padding: 5px 0;
   margin: 0 10px;
   border-bottom: 1px solid darkgrey;
+  background-color: base.$backgroundColor;
 
   display: flex;
   align-items: center;
@@ -67,9 +70,13 @@ header {
     list-style-type: none;
 
     .crumbcontainer__crumb + .crumbcontainer__crumb::before {
-      content: url("../img/right-arrow.svg");
+      content: url("../img/arrows/right-arrow.svg");
       margin: 0 10px;
       padding: 0;
+    }
+
+    .crumbcontainer__actual-page {
+      font-weight: bold;
     }
   }
 }

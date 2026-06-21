@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="500" height="500" version="1.1" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+	<defs>
+		<marker id="Stop" overflow="visible" markerHeight="1" markerWidth="1" orient="auto" preserveAspectRatio="xMidYMid" viewBox="0 0 1 1">
+			<path d="m0 4v-8" fill="none" stroke="context-stroke"/>
+		</marker>
+		<marker id="DartArrow-0" overflow="visible" markerHeight="1" markerWidth="1" orient="auto-start-reverse" preserveAspectRatio="xMidYMid" viewBox="0 0 1 1">
+			<path transform="scale(-.5)" d="m0 0 5-5-17.5 5 17.5 5z" fill="context-stroke" fill-rule="evenodd"/>
+		</marker>
+		<marker id="DartArrow-7-2" overflow="visible" markerHeight="1" markerWidth="1" orient="auto-start-reverse" preserveAspectRatio="xMidYMid" viewBox="0 0 1 1">
+			<path transform="scale(-.5)" d="m0 0 5-5-17.5 5 17.5 5z" fill="context-stroke" fill-rule="evenodd"/>
+		</marker>
+	</defs>
+	<g>
+		<path transform="translate(530.18 -513.67)" d="m1.5 498.5 497-497" fill="#fff" stroke="#000" stroke-dasharray="12,6" stroke-linejoin="round" stroke-width="3"/>
+		<g fill-opacity="0" stroke="#000" stroke-linejoin="round" stroke-width="3">
+			<path d="m-220.07-546.84s107.36 56.518 147.95 100.08c53.994 57.96 118.89 205.76 118.89 205.76s-91.728-112.62-148.99-156.18c-44.595-33.922-148.18-79.354-148.18-79.354" marker-end="url(#DartArrow-7-2)"/>
+			<path d="m369.73-254.46s10.03-42.203 54.896-51.105 67.833 17.477 67.833 17.477" marker-end="url(#DartArrow-0)"/>
+			<path d="m209.59-321.94s45.145-25.933 70.201-31.259c19.411-4.1265 59.535 0 59.535 0" marker-end="url(#DartArrow-0)"/>
+		</g>
+		<g stroke="#000" stroke-width="3">
+			<path d="m-224.42-49.048s17.085-11.766 22.458-11.932c5.3738-0.16615 24.929 11.433 24.929 11.433s-9.0086-20.484-10.881-29.207c-1.8727-8.7227-0.35483-23.129-0.35483-23.129l18.564 4.9844-28.335-33.894-30.289 32.897 16.121-3.9875s0.51764 14.245-1.3381 23.194c-1.8557 8.9491-10.875 29.641-10.875 29.641z" fill="#fff"/>
+			<path transform="translate(-96.81 -541.37)" d="m435.2 340.74c-0.23572 6.8789-0.46325 13.758-0.68257 20.637-0.24735 7.7584-0.48426 15.517-0.71075 23.276" fill-opacity="0" marker-mid="url(#Stop)" marker-start="url(#DartArrow-0)"/>
+			<path transform="translate(108.48 -385.63)" d="m-45.914 290.76 245.58 4.419" fill="#fff" stroke-dasharray="12,6,3,6" stroke-linejoin="round"/>
+		</g>
+		<path d="m470.06-145.98 113.84-81.71" fill-opacity="0" stroke="#646464"/>
+	</g>
+	<g stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="3">
+		<path d="m498.15 409.6h-497.27l248.63-248.98z" fill="#fff"/>
+		<path d="m249.51 160.62 248.63 248.98h-497.27z" fill="#ff9696"/>
+		<path d="m471.78 397.29-226.22 1.211-244.68 11.106 248.63-248.98z" fill="#fff"/>
+	</g>
+	<path transform="matrix(1.1909 0 0 1.1925 -374.29 507.91)" d="m520.5-100.14 3.316-182.7" fill-opacity="0" stroke="#646464" stroke-width=".83914"/>
+	<g stroke="#000">
+		<path transform="matrix(1.1909 0 0 1.1925 330.28 -459.94)" d="m-67.824 520.38-3.3159 199.47" fill="#fff" stroke-dasharray="10.06968021,5.03484011" stroke-linejoin="round" stroke-width="2.5174"/>
+		<path d="m181.5 430.22s15.013-19.646 21.037-21.816c6.0243-2.1709 32.443 3.7692 32.443 3.7692s-17.748-19.906-23.083-29.107c-5.3342-9.2009-8.9226-26.098-8.9226-26.098l22.859-1.1962-44.574-27.983-22.181 48.48 16.788-10.469s5.8341 15.963 7.0295 26.796c1.1954 10.833-1.3958 37.625-1.3958 37.625z" fill="#fff" stroke-width="3"/>
+		<path d="m249.51 160.62 222.27 236.66-261.06-57.911-209.84 70.228z" fill="#ff9696" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+	</g>
+	<path transform="matrix(1.1909 0 0 1.1925 -374.29 507.91)" d="m492.92-149.71 29.217-133.12" fill-opacity="0" stroke="#646464" stroke-width=".83914"/>
+	<g stroke="#000">
+		<path transform="matrix(1.1909 0 0 1.1925 135.16 -204.47)" d="m63.449 456.04 32.575-149.89" fill="#fff" stroke-dasharray="10.06968021,5.03484011,2.51742005,5.03484011" stroke-linejoin="round" stroke-width="2.5174"/>
+		<path d="m186.66 268.79s-21.153-49.154-66.67-71.184c-32.868-15.908-56.574-7.8246-56.574-7.8246" fill-opacity="0" marker-end="url(#DartArrow-0)" stroke-linejoin="round" stroke-width="3"/>
+		<path transform="rotate(222.59 410.5 311.3)" d="m435.2 340.74c-0.23572 6.8789-0.46325 13.758-0.68257 20.637-0.24735 7.7584-0.48426 15.517-0.71075 23.276" fill-opacity="0" marker-mid="url(#Stop)" marker-start="url(#DartArrow-0)" stroke-width="3"/>
+	</g>
+</svg>

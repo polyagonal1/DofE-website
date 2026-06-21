@@ -1,5 +1,3 @@
-{% assign long_title = include.long_title %}
-{% assign short_title = include.short_title %}
 {% assign home_page = site.pages | find: "perma_id", "home_page" %}
 
 <header>
@@ -24,18 +22,26 @@
             {% assign current_url = "" %}
 
             {% assign page_url_chars = page.url | split: "" %}
+            <!-- page_url_chars = {{ page_url_chars | inspect }} -->
+
             {% for char in page_url_chars %}
                 <!-- char = {{ char | inspect }} -->
 
                 {% assign current_url = current_url | append: char %}
 
-                {% for p in site.pages %}
-                    {% if current_url == p.url %}
-                        <li class="crumbcontainer__crumb">
-                            <a href="{{ site.baseurl }}{{ p.url }}">{{ p.short_title | default: p.title | default: p.long_title }}</a>
-                        </li>
-                    {% endif %}
-                {% endfor %}
+                {% if current_url == page.url %}
+                    <li class="crumbcontainer__crumb crumbcontainer__actual-page">
+                        {{ page.short_title | default: page.title }}
+                    </li>
+                {% else %}
+                    {% for p in site.pages %}
+                        {% if current_url == p.url %}
+                            <li class="crumbcontainer__crumb">
+                                <a href="{{ site.baseurl }}{{ p.url }}">{{ p.short_title | default: p.title }}</a>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
             {% endfor %}
         </ul>
     </nav>

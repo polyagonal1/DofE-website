@@ -1,7 +1,7 @@
 $backgroundColor: #ffffff;
 $bodyColor: #000000;
 $bodyFont: "Helvetica", "Arial", sans-serif;
-$bodyFontSize: 16px;
+$bodyFontSize: 1rem;
 
 $linkHoverColor: #8dd6d9;
 
@@ -28,10 +28,27 @@ main {
 }
 
 p {
-  font-size: 20px;
+  font-size: $bodyFontSize;
 }
 
 .unrelated-paragraph {
   margin-block-start: 50px;
   font-size: 16px;
+}
+
+.inline-image {
+  vertical-align: middle;
+  height: 1em;
+}
+
+@media (scripting: none) {
+  .js-only {
+    display: none !important;
+  }
+}
+
+@media (scripting: enabled) {
+  .noscript {
+    display: none !important;
+  }
 }

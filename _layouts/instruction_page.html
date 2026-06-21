@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: "en-GB" }}">
+
+{% if page.extra_style %}
+    {% assign extra_style = page.extra_style | push: "instructions.css" %}
+{% else %}
+    {% assign extra_style = "instructions.css" | split: "/" %}
+{% endif %}
+
+<!-- extra_style = {{ extra_style | inspect }} -->
+
+{% if page.extra_scripts %}
+    {% assign extra_scripts = page.extra_scripts | push: "instructions.js" %}
+{% else %}
+    {% assign extra_scripts = "instructions.js" | split: "/" %}
+{% endif %}
+
+<!-- extra_scripts = {{ extra_scripts | inspect }} -->
+
+{% include head.html extra_style=extra_style extra_scripts=extra_scripts %}
+
+<body>
+    {% include header.html %}
+
+    <main role="main">
+        {% unless page.url == "/" %}
+            <h1>{{ page.title }}</h1>
+        {% endunless %}
+
+        {{ content }}
+
+        {% assign perma_id_dir = page.perma_id | append: "/" %}
+        {% assign page_img_folder = page.img_folder | default: perma_id_dir %}
+
+        <ol id="steps">
+            {% for step in page.steps %}
+                <li class="step">
+
+                    {% if step.diagram.sources == empty %}
+                        {% assign step_diagram_sources_emptyness = "empty" %}
+                    {% endif %}
+                    {% unless step.diagram.sources %}
+                        {% assign step_diagram_sources_emptyness = "empty" %}
+                    {% endunless %}
+                    {% if step_diagram_sources_emptyness == "empty" %}
+                        <!--Test text here-->
+
+                        {% capture step_diagram_emptyness %}
+                            {% include is_empty.html obj=step.diagram %}
+                        {% endcapture %}
+                        {% assign step_diagram_emptyness = step_diagram_emptyness | strip %}
+                        {% if step_diagram_emptyness == "empty" %}
+                            <!-- no sources, no diagram -->
+                            {% assign default_alt = "Diagram for step " | append: forloop.index %}
+
+                            {% assign default_src = "/assets/img/"
+                                    | append: page_img_folder
+                                    | append: "steps/"
+                                    | append: "step"
+                                    | append: forloop.index
+                                    | append: ".svg"
+                            %}
+
+                            {% include image.html
+                                class="step__diagram"
+                                img_class="step__diagram"
+                                img_alt=default_alt
+                                img_src=default_src
+                            %}
+
+                            <p class="step__description">
+                                {{- step -}}
+                            </p>
+                        {% else %}
+                            <!-- step.diagram = {{ step.diagram | inspect }} -->
+                            <!-- no sources, yes diagram -->
+
+                            {% assign img_src = "/assets/img/"
+                                | append: page_img_folder
+                                | append: step.diagram.src
+                            %}
+
+                            {% include image.html
+                                class="step__diagram"
+                                img_src=img_src
+                                img_alt=step.diagram.alt
+                                img_srcset=step.diagram.srcset
+                                img_sizes=step.diagram.sizes
+                            %}
+
+                            <p class="step__description">
+                                {{ step.description | default: "Description not found" }}
+                            </p>
+                        {% endif %}
+                    {% else %}
+                        <!-- step.diagram.sources = {{ step.diagram.sources | inspect }} -->
+                        <!-- step.diagram.sources is not empty -->
+                        {% include image.html
+                            class="step__diagram"
+                            img=step.diagram.img
+
+                            sources=step.diagram.sources
+                        %}
+
+                        <p class="step__description">
+                            {{ step.description | default: "Description not found" }}
+                        </p>
+                        {% endif %}
+                </li>
+            {% endfor %}
+        </ol>
+
+        <!--<div class="js-only" id="instructions">
+            <img id="instructions__diagram" alt="placeholder" src="https://placehold.co/500x350/png/000000">
+
+            <div id="instructions__description">
+                Description here
+            </div>
+
+            <button class="back-button">
+                <img class="inline-image" alt="Left arrow" src="{{ site.baseurl }}/assets/img/arrows/left-arrow.svg">
+                Back
+            </button>
+
+            <button class="forward-button">
+                Next
+                <img alt="Right arrow" src="{{ site.baseurl }}/assets/img/arrows/right-arrow.svg" class="inline-image">
+            </button>
+        </div>-->
+    </main>
+</body>
+
+</html>

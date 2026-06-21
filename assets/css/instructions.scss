@@ -1,0 +1,17 @@
+#steps {
+  display: flex;
+  flex-direction: column;
+
+  .step {
+    .step__diagram {
+      float: left;
+
+      width: 200px;
+      height: 200px;
+
+      margin: 10px;
+    }
+  }
+
+  margin-bottom: 100px;
+}

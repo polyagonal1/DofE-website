@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="500" height="500" version="1.1" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+	<defs>
+		<marker id="DartArrow-0" overflow="visible" markerHeight="1" markerWidth="1" orient="auto-start-reverse" preserveAspectRatio="xMidYMid" viewBox="0 0 1 1">
+			<path transform="scale(-.5)" d="m0 0 5-5-17.5 5 17.5 5z" fill="context-stroke" fill-rule="evenodd"/>
+		</marker>
+		<marker id="DartArrow-7-2" overflow="visible" markerHeight="1" markerWidth="1" orient="auto-start-reverse" preserveAspectRatio="xMidYMid" viewBox="0 0 1 1">
+			<path transform="scale(-.5)" d="m0 0 5-5-17.5 5 17.5 5z" fill="context-stroke" fill-rule="evenodd"/>
+		</marker>
+	</defs>
+	<g stroke="#000" stroke-linejoin="round" stroke-width="3">
+		<path transform="translate(530.18 -513.67)" d="m1.5 498.5 497-497" fill="#fff" stroke-dasharray="12,6"/>
+		<path d="m-220.07-546.84s107.36 56.518 147.95 100.08c53.994 57.96 118.89 205.76 118.89 205.76s-91.728-112.62-148.99-156.18c-44.595-33.922-148.18-79.354-148.18-79.354" fill-opacity="0" marker-end="url(#DartArrow-7-2)"/>
+		<path d="m498.62-332.74s-117.46 18.392-196.51 117.84c-74.895 94.228-89.911 168.64-89.911 168.64" fill-opacity="0" marker-end="url(#DartArrow-0)"/>
+	</g>
+	<path d="m1.5 1.5 497 497h-497z" fill="#fff" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+	<g fill-opacity="0" stroke="#4b4b4b" stroke-linejoin="round">
+		<path d="m1.5 250h248.5"/>
+		<path transform="rotate(90 250 250)" d="m250 250 248.5 1e-5"/>
+		<path transform="rotate(90 250 250)" d="m250 250 248.5 248.5"/>
+	</g>
+	<g fill="#ff9696">
+		<path d="m1.5 1.5 497 497-491.63-4.8487z" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+		<path transform="matrix(.87251 0 0 .87248 101.98 17.482)" d="m172.73 534.79-3.0801-256.82" stroke="#646464" stroke-width="1.1461"/>
+		<path transform="matrix(.87251 0 0 .87248 101.98 17.482)" d="m-100.62 263.72 258.81 2.7787" stroke="#646464" stroke-width="1.1461"/>
+	</g>
+	<path d="m1.5 498.5 248.5-248.5" fill="#fff" stroke="#000" stroke-dasharray="12,6" stroke-linejoin="round" stroke-width="3"/>
+	<path d="m51.599 202.5s91.884 14.387 153.72 92.181c58.586 73.709 70.332 131.92 70.332 131.92" fill-opacity="0" marker-end="url(#DartArrow-0)" stroke="#000" stroke-linejoin="round" stroke-width="3"/>
+</svg>
